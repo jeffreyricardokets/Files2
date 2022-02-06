@@ -32,5 +32,4 @@ def find_password(list):
         with open(item, 'r') as file:
             for line in file:
                 if 'password' in line:
-                    secret_code = line[:line.find('</br>')]
-    return secret_code
+                    return line[:line.find('</br>')]
