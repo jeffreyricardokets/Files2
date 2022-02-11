@@ -1,16 +1,14 @@
 import os
-import pathlib
-import glob
 from zipfile import ZipFile
 
 __winc_id__ = "ae539110d03e49ea8738fd413ac44ba8"
 __human_name__ = "files"
 
-path = str(pathlib.Path(__file__).parent.absolute()) + '/cache'
+path = os.getcwd() + '/cache/'
 
 def clean_cache():
-    files = glob.glob(path + '/*')
-    if os.path.exists(path):
+    if os.path.isdir(path):
+        files = os.scandir(path)
         for f in files:
             os.remove(f)
     else:
@@ -23,8 +21,8 @@ def cache_zip(zip_path, cache_dir):
 
 def cached_files():
     list = []
-    for item in glob.glob(f'{path}/*'):
-        list.append(os.path.abspath(item))
+    for item in os.listdir("/home/jeffrey/Documents/Winc/files/cache"):
+        list.append(os.path.abspath(path + item))
     return list
 
 def find_password(list):
