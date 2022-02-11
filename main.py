@@ -21,7 +21,7 @@ def cache_zip(zip_path, cache_dir):
 
 def cached_files():
     list = []
-    for item in os.listdir("/home/jeffrey/Documents/Winc/files/cache"):
+    for item in os.listdir(path):
         list.append(os.path.abspath(path + item))
     return list
 
