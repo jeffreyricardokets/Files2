@@ -24,7 +24,7 @@ def cache_zip(zip_path, cache_dir):
 def cached_files():
     list = []
     for item in glob.glob(f'{path}/*'):
-        list.append(item)
+        list.append(os.path.abspath(item))
     return list
 
 def find_password(list):
@@ -32,4 +32,8 @@ def find_password(list):
         with open(item, 'r') as file:
             for line in file:
                 if 'password' in line:
-                    return line[:line.find('</br>')]
+                    return line[line.find(" ") + 1:line.find('</br>')]
+    
+
+print(cached_files())
+print(find_password(cached_files()))
