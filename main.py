@@ -1,10 +1,11 @@
 import os
 from zipfile import ZipFile
+from pathlib import Path
 
 __winc_id__ = "ae539110d03e49ea8738fd413ac44ba8"
 __human_name__ = "files"
 
-path = os.getcwd() + '/cache/'
+path = Path(os.path.realpath(__file__)).parent.absolute()
 
 def clean_cache():
     if os.path.isdir(path):
@@ -33,5 +34,6 @@ def find_password(list):
                     return line[line.find(" ") + 1:line.find('</br>')]
     
 
+cache_zip('/home/jeffrey/Documents/Winc/files/data.zip', '/home/jeffrey/Documents/Winc/files/cache')
 print(cached_files())
 print(find_password(cached_files()))
